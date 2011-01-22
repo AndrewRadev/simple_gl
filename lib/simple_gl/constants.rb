@@ -1,20 +1,21 @@
 module SimpleGl
-  # Provides mappings from symbols to standard OpenGL constants.
+  # Provides mappings from symbols to standard OpenGL and GLUT constants.
+  #
+  # The mappings rely on a standard transformation -- the symbol is upcased and
+  # added the "GL_" or "GLUT_" prefix.
   #
   # Examples:
   #
   #   :line_strip # => GL_LINE_STRIP
   #   :points     # => GL_POINTS
   #
-  # TODO: For now, the mapping is global, needs to be scoped by usage.
   module Constants
     def gl_constant(type)
-      case type
-      when :line_strip then GL_LINE_STRIP
-      when :points     then GL_POINTS
-      else
-        raise "Unknown constant lookup"
-      end
+      GL.const_get("GL_#{type.to_s.upcase}")
+    end
+
+    def glut_constant(type)
+      GLUT.const_get("GL_#{type.to_s.upcase}")
     end
   end
 end

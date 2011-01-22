@@ -21,6 +21,14 @@ module SimpleGl
       GL.PointSize(v.to_f)
     end
 
+    def matrix_mode=(v)
+      GL.MatrixMode(gl_constant(v))
+    end
+
+    def shade_model=(v)
+      GL.ShadeModel(gl_constant(v))
+    end
+
     # Wraps glBegin and glEnd methods by yielding between those two calls. Makes
     # consequent drawing code much clearer and more ruby-esque.
     #

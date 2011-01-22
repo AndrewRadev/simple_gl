@@ -12,13 +12,13 @@ $ctrlpoints = [
 
 app = GlutApp.new do
   init do
-    glut.init_display_mode(GLUT_DOUBLE | GLUT_RGB)
+    glut.init_display_mode(:double, :rgb)
     glut.init_window_size(500, 500)
     glut.init_window_position(100, 100)
     glut.create_window
 
-    gl.clear_color(0.0, 0.0, 0.0, 0.0)
-    gl.shade_model(GL_FLAT)
+    gl.clear_color(0, 0, 0, 0)
+    gl.shade_model = :flat
     gl.map1d(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 4, $ctrlpoints.flatten)
     gl.enable(GL_MAP1_VERTEX_3)
   end
@@ -49,14 +49,14 @@ app = GlutApp.new do
   reshape do |w, h|
     gl.viewport(0, 0, w, h)
 
-    gl.matrix_mode(GL_PROJECTION)
+    gl.matrix_mode = :projection
     gl.load_identity
     if (w <= h)
       gl.ortho(-5.0, 5.0, -5.0*h/w, 5.0*h/w, -5.0, 5.0)
     else
       gl.ortho(-5.0*w/h, 5.0*w/h, -5.0, 5.0, -5.0, 5.0)
     end
-    gl.matrix_mode(GL_MODELVIEW)
+    gl.matrix_mode = :modelview
     gl.load_identity
   end
 

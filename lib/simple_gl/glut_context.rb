@@ -2,6 +2,12 @@ require 'glut'
 
 module SimpleGl
   class GlutContext
+    include Constants
+
+    def init_display_mode(*constants)
+      constants.map { |c| glut_constant(c) }.inject(0) { |c, bits| c | bits }
+    end
+
     # Delegates underscored ruby-style methods to standard camelcased OpenGL
     # ones.
     #
