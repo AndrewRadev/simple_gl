@@ -1,5 +1,6 @@
 require 'gl'
 require 'simple_gl/constants'
+require 'simple_gl/helpers'
 
 require 'singleton'
 
@@ -8,8 +9,10 @@ module SimpleGl
   # top. A good example is the +begin+ method, which wraps glBegin and glEnd
   # calls by yielding to a ruby block.
   class GlContext
-    include Singleton
     include Constants
+    include Helpers
+
+    include Singleton
 
     def clear
       GL.Clear(GL_COLOR_BUFFER_BIT)
@@ -64,12 +67,6 @@ module SimpleGl
     #   load_identity              # => GL.LoadIdentity
     def method_missing(m, *args, &block)
       GL.send(camel_case(m), *args, &block)
-    end
-
-    private
-
-    def camel_case(string)
-      string.to_s.gsub(/(?:^|_)(.)/) { $1.upcase }
     end
   end
 end

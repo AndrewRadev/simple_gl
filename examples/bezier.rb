@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'simple_gl/glut_app'
+require 'simple_gl'
 
 include SimpleGl
 

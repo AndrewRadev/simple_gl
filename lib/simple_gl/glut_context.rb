@@ -1,10 +1,13 @@
 require 'glut'
+require 'simple_gl/helpers'
 
 require 'singleton'
 
 module SimpleGl
   class GlutContext
     include Constants
+    include Helpers
+
     include Singleton
 
     def init_display_mode(*constants)
@@ -21,12 +24,6 @@ module SimpleGl
     #   load_identity              # => GL.LoadIdentity
     def method_missing(m, *args, &block)
       Glut.send("glut#{camel_case(m)}", *args, &block)
-    end
-
-    private
-
-    def camel_case(string)
-      string.to_s.gsub(/(?:^|_)(.)/) { $1.upcase }
     end
   end
 end
