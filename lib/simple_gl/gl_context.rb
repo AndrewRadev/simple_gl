@@ -1,11 +1,14 @@
 require 'gl'
 require 'simple_gl/constants'
 
+require 'singleton'
+
 module SimpleGl
   # Provides an interface to the standard GL module with a little syntax sugar on
   # top. A good example is the +begin+ method, which wraps glBegin and glEnd
   # calls by yielding to a ruby block.
   class GlContext
+    include Singleton
     include Constants
 
     def clear

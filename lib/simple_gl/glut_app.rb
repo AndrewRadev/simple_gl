@@ -15,8 +15,8 @@ module SimpleGl
     attr_reader :glut
 
     def initialize(&block)
-      @gl   = GlContext.new
-      @glut = GlutContext.new
+      @gl   = GlContext.instance
+      @glut = GlutContext.instance
 
       instance_eval &block unless block.nil?
     end

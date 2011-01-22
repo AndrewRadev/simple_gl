@@ -1,8 +1,11 @@
 require 'glut'
 
+require 'singleton'
+
 module SimpleGl
   class GlutContext
     include Constants
+    include Singleton
 
     def init_display_mode(*constants)
       constants.map { |c| glut_constant(c) }.inject(0) { |c, bits| c | bits }
