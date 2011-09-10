@@ -24,7 +24,11 @@ module SimpleGl
     def start
       glut.init
 
-      instance_eval &@init_proc if @init_proc
+      if @init_proc
+        instance_eval &@init_proc
+      else
+        default_init
+      end
 
       glut.display_func(@display_proc)
 
@@ -34,6 +38,16 @@ module SimpleGl
 
     def main_loop
       glut.main_loop
+    end
+
+    def default_init
+      glut.init_display_mode(:double, :rgb)
+      glut.init_window_size(500, 500)
+      glut.init_window_position(100, 100)
+      glut.create_window
+
+      gl.clear_color(0, 0, 0, 0)
+      gl.shade_model = :flat
     end
 
     module Callbacks
