@@ -5,8 +5,8 @@ require 'simple_gl/glut_context'
 include Gl,Glu,Glut
 
 module SimpleGl
-  # Acts as a basic glut application, with convenience methods to initialize
-  # the window and set some standard parameters.
+  # Acts as a basic glut application with convenience methods to initialize the
+  # window and set some standard parameters.
   #
   # TODO: Needs to be much more configurable, although that'll have to wait
   # until more examples are collected.
