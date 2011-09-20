@@ -1,6 +1,6 @@
-require 'simple_gl/glut_app'
+require 'simple_gl/glut/app'
 
-app = SimpleGl::GlutApp.new do
+app = SimpleGl::Glut::App.new do
   display do
     radius = 30
 

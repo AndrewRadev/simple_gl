@@ -1,8 +1,6 @@
 require 'rubygems'
 require 'simple_gl'
 
-include SimpleGl
-
 $ctrlpoints = [
   [ -4, -4, 0 ],
   [ -2,  4, 0 ],
@@ -10,7 +8,7 @@ $ctrlpoints = [
   [  4,  4, 0 ],
 ]
 
-app = GlutApp.new do
+app = SimpleGl::Glut::App.new do
   init do
     glut.init_display_mode(:double, :rgb)
     glut.init_window_size(500, 500)

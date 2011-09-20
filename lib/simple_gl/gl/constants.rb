@@ -8,15 +8,12 @@ module SimpleGl
   #
   #   gl_constant(:line_strip) # => GL_LINE_STRIP
   #   gl_constant(:points)     # => GL_POINTS
-  #   glut_constant(:double)   # => GLUT_DOUBLE
   #
-  module Constants
-    def gl_constant(type)
-      GL.const_get("GL_#{type.to_s.upcase}")
-    end
-
-    def glut_constant(type)
-      GLUT.const_get("GL_#{type.to_s.upcase}")
+  module Gl
+    module Constants
+      def gl_constant(type)
+        ::GL.const_get("GL_#{type.to_s.upcase}")
+      end
     end
   end
 end
