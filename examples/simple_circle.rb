@@ -4,6 +4,7 @@ app = SimpleGl::GlutApp.new do
   display do
     radius = 30
 
+    gl.clear
     gl.color 1, 1, 1
     gl.begin :line_strip do
       (0..360).each do |degrees|
