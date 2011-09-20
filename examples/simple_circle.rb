@@ -35,5 +35,4 @@ app = SimpleGl::GlutApp.new do
   end
 end
 
-app.start
 app.main_loop

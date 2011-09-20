@@ -21,7 +21,7 @@ module SimpleGl
       instance_eval &block unless block.nil?
     end
 
-    def start
+    def main_loop
       glut.init
 
       if @init_proc
@@ -34,9 +34,6 @@ module SimpleGl
 
       glut.keyboard_func(@keyboard_proc) if @keyboard_proc
       glut.reshape_func(@reshape_proc) if @reshape_proc
-    end
-
-    def main_loop
       glut.main_loop
     end
 
