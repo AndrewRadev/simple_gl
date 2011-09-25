@@ -1,7 +1,7 @@
 require 'simple_gl/glut/app'
 
-app = SimpleGl::Glut::App.new do
-  display do
+class SimpleCircleApp < SimpleGl::Glut::App
+  def display
     radius = 30
 
     gl.clear
@@ -20,8 +20,7 @@ app = SimpleGl::Glut::App.new do
     glut.swap_buffers
   end
 
-  # TODO (2011-09-10) Need something here by default
-  reshape do |w, h|
+  def reshape(w, h)
     gl.viewport(0, 0, w, h)
 
     gl.matrix_mode = :projection
@@ -36,4 +35,4 @@ app = SimpleGl::Glut::App.new do
   end
 end
 
-app.main_loop
+SimpleCircleApp.new.main_loop

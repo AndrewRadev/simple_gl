@@ -8,8 +8,8 @@ $ctrlpoints = [
   [  4,  4, 0 ],
 ]
 
-app = SimpleGl::Glut::App.new do
-  init do
+class BezierApp < SimpleGl::Glut::App
+  def init
     glut.init_display_mode(:double, :rgb)
     glut.init_window_size(500, 500)
     glut.init_window_position(100, 100)
@@ -21,7 +21,7 @@ app = SimpleGl::Glut::App.new do
     gl.enable(GL_MAP1_VERTEX_3)
   end
 
-  display do
+  def display
     gl.clear
     gl.color 1, 1, 1
     gl.begin :line_strip do
@@ -44,7 +44,7 @@ app = SimpleGl::Glut::App.new do
     glut.swap_buffers
   end
 
-  reshape do |w, h|
+  def reshape(w, h)
     gl.viewport(0, 0, w, h)
 
     gl.matrix_mode = :projection
@@ -58,7 +58,7 @@ app = SimpleGl::Glut::App.new do
     gl.load_identity
   end
 
-  keyboard do |key, x, y|
+  def keyboard(key, x, y)
     case (key)
     when ?\e
       exit(0)
@@ -66,4 +66,4 @@ app = SimpleGl::Glut::App.new do
   end
 end
 
-app.main_loop
+BezierApp.new.main_loop

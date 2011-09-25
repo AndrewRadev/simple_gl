@@ -3,12 +3,18 @@ require 'simple_gl/gl/context'
 require 'simple_gl/glut/context'
 
 module SimpleGl
-  # Acts as a basic glut application with convenience methods to initialize the
-  # window and set some standard parameters.
-  #
-  # TODO: Needs to be much more configurable, although that'll have to wait
-  # until more examples are collected.
   module Glut
+    # The abstract base class for Glut apps. Any class inheriting it needs to
+    # implement at least the following methods:
+    #
+    #   * display
+    #
+    # Optionally, these methods are also available for overriding:
+    #
+    #   * init
+    #   * reshape
+    #   * keyboard
+    #
     class App
       attr_reader :gl, :glut
 
@@ -22,20 +28,16 @@ module SimpleGl
       def main_loop
         glut.init
 
-        if @init_proc
-          instance_eval(&@init_proc)
-        else
-          default_init
-        end
+        init
 
-        glut.display_func(@display_proc)
+        glut.display_func(method(:display).to_proc)
+        glut.reshape_func(method(:reshape).to_proc)
+        glut.keyboard_func(method(:keyboard).to_proc)
 
-        glut.keyboard_func(@keyboard_proc) if @keyboard_proc
-        glut.reshape_func(@reshape_proc) if @reshape_proc
         glut.main_loop
       end
 
-      def default_init
+      def init
         glut.init_display_mode(:double, :rgb)
         glut.init_window_size(500, 500)
         glut.init_window_position(100, 100)
@@ -45,25 +47,14 @@ module SimpleGl
         gl.shade_model = :flat
       end
 
-      module Callbacks
-        def init(&block)
-          @init_proc = block
-        end
-
-        def display(&block)
-          @display_proc = block
-        end
-
-        def keyboard(&block)
-          @keyboard_proc = block
-        end
-
-        def reshape(&block)
-          @reshape_proc = block
-        end
+      def display
       end
 
-      include Callbacks
+      def keyboard(key, x, y)
+      end
+
+      def reshape(w, h)
+      end
     end
   end
 end
