@@ -7,13 +7,13 @@ module SimpleGl
     # The abstract base class for Glut apps. Any class inheriting it needs to
     # implement at least the following methods:
     #
-    #   * display
+    #   - display
     #
     # Optionally, these methods are also available for overriding:
     #
-    #   * init
-    #   * reshape
-    #   * keyboard
+    #   - init
+    #   - reshape
+    #   - keyboard
     #
     class App
       attr_reader :gl, :glut
@@ -37,6 +37,8 @@ module SimpleGl
         glut.main_loop
       end
 
+      # Invoked when starting the main loop. Override this method to change the
+      # screen and window setup.
       def init
         glut.init_display_mode(:double, :rgb)
         glut.init_window_size(500, 500)
@@ -47,12 +49,17 @@ module SimpleGl
         gl.shade_model = :flat
       end
 
+      # Invoked in order to draw the stage. All the rendering code should be
+      # put in this method.
       def display
+        raise "Not implemented"
       end
 
+      # Invoked on every keypress. Does nothing by default.
       def keyboard(key, x, y)
       end
 
+      # Invoked on resizing the Glut window. Does nothing by default
       def reshape(w, h)
       end
     end

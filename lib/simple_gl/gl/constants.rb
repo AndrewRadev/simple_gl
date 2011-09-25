@@ -1,8 +1,8 @@
 module SimpleGl
-  # Provides mappings from symbols to standard OpenGL and GLUT constants.
+  # Provides mappings from symbols to standard OpenGL constants.
   #
   # The mappings rely on a standard transformation -- the symbol is upcased and
-  # prefixed with "GL_" or "GLUT_".
+  # prefixed with "GL_"
   #
   # Examples:
   #
