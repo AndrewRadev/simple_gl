@@ -1,3 +1,5 @@
+require 'opengl'
+
 module SimpleGl
   # Provides mappings from symbols to standard OpenGL constants.
   #

@@ -11,7 +11,7 @@ module SimpleGl
   module Glut
     module Constants
       def glut_constant(type)
-        ::GLUT.const_get("GL_#{type.to_s.upcase}")
+        ::GLUT.const_get("GLUT_#{type.to_s.upcase}")
       end
     end
   end

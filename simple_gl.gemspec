@@ -20,4 +20,6 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.add_dependency('ruby-opengl', '~> 0.60.1')
+
+  s.add_development_dependency('rspec', '~> 2.6.0')
 end
