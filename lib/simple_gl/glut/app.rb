@@ -30,6 +30,10 @@ module SimpleGl
 
         init
 
+        if self.respond_to? :animate
+          glut.timer_func(0, method(:animation_timer).to_proc, 0)
+        end
+
         glut.display_func(method(:display).to_proc)
         glut.reshape_func(method(:reshape).to_proc)
         glut.keyboard_func(method(:keyboard).to_proc)
@@ -61,6 +65,15 @@ module SimpleGl
 
       # Invoked on resizing the Glut window. Does nothing by default
       def reshape(w, h)
+      end
+
+      private
+
+      def animation_timer(miliseconds)
+        @frame_length ||= 1000 / 50.0
+        self.animate(miliseconds)
+        glut.post_redisplay
+        glut.timer_func(@frame_length, method(:animation_timer).to_proc, miliseconds + @frame_length)
       end
     end
   end
