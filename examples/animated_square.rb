@@ -23,14 +23,11 @@ class PulsatingSquare
   def render(gl)
     gl.color 0, 0, 0
 
-    side = @side
-    x, y = @x, @y
-
-    gl.begin :polygon do
-      vertex(x - side/2, y - side/2, 0)
-      vertex(x - side/2, y + side/2, 0)
-      vertex(x + side/2, y + side/2, 0)
-      vertex(x + side/2, y - side/2, 0)
+    gl.begin :polygon do |gl|
+      gl.vertex(@x - @side/2, @y - @side/2, 0)
+      gl.vertex(@x - @side/2, @y + @side/2, 0)
+      gl.vertex(@x + @side/2, @y + @side/2, 0)
+      gl.vertex(@x + @side/2, @y - @side/2, 0)
     end
   end
 end

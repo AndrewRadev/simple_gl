@@ -24,9 +24,9 @@ class BezierApp < SimpleGl::Glut::App
   def display
     gl.clear
     gl.color 1, 1, 1
-    gl.begin :line_strip do
+    gl.begin :line_strip do |gl|
       for i in 0..30
-        eval_coord1d(i.to_f/30.0)
+        gl.eval_coord1d(i.to_f/30.0)
       end
     end
 
@@ -34,11 +34,11 @@ class BezierApp < SimpleGl::Glut::App
     gl.point_size = 5
     gl.color 1, 1, 0
 
-    gl.begin :points do
-      vertex -4, -4, 0
-      vertex -2,  4, 0
-      vertex  2, -4, 0
-      vertex  4,  4, 0
+    gl.begin :points do |gl|
+      gl.vertex -4, -4, 0
+      gl.vertex -2,  4, 0
+      gl.vertex  2, -4, 0
+      gl.vertex  4,  4, 0
     end
 
     glut.swap_buffers

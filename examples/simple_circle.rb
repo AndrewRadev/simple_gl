@@ -6,14 +6,14 @@ class SimpleCircleApp < SimpleGl::Glut::App
 
     gl.clear
     gl.color 1, 1, 1
-    gl.begin :line_strip do
+    gl.begin :line_strip do |gl|
       (0..360).each do |degrees|
         radians = degrees * (Math::PI / 180)
 
         x = radius * Math.cos(radians)
         y = radius * Math.sin(radians)
 
-        vertex x, y, 0
+        gl.vertex x, y, 0
       end
     end
 

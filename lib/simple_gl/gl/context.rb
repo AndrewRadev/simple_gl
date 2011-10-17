@@ -41,14 +41,14 @@ module SimpleGl
       #
       # Example:
       #
-      #   begin :points do
-      #     vertex 1, 2, 3
-      #     vertex 2, 3, 4
+      #   begin :points do |gl|
+      #     gl.vertex 1, 2, 3
+      #     gl.vertex 2, 3, 4
       #   end
       def begin(type, &block)
         GL.Begin(gl_constant(type))
 
-        instance_eval(&block)
+        block.call(self)
 
         GL.End
       end
