@@ -18,11 +18,9 @@ module SimpleGl
     class App
       attr_reader :gl, :glut
 
-      def initialize(&block)
+      def initialize
         @gl   = Gl::Context.instance
         @glut = Glut::Context.instance
-
-        instance_eval(&block) unless block.nil?
       end
 
       def main_loop
