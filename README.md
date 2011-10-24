@@ -5,8 +5,7 @@ opengl.
 Apart from converting camelCased methods to their underscored versions, this
 gem also provides glut "apps" that can be used to build small applications
 fairly quickly. A few examples can be found in the `examples` directory. The
-fastest way to get something on the screen quickly would be
-`Glut.simple_render`:
+fastest way to get something on the screen would be `Glut.simple_render`:
 
 ``` ruby
 require 'simple_gl'
