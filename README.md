@@ -1,3 +1,7 @@
+*Note: Currently, this project doesn't seem to work, since the OpenGL bindings
+aren't able to be installed due to rake incompatibilities. The opengl project
+seems abandoned, so it's unlikely it'll be fixed.*
+
 Since the OpenGL functions in the ruby bindings don't seem very ruby-esque,
 this little project aims to provide a (hopefully) nicer API to drawing with
 opengl.
